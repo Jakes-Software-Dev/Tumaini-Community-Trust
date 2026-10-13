@@ -1,0 +1,23 @@
+{
+  "name": "tumaini-community-trust",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./public/assets/css/styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./public/assets/css/styles.css --watch",
+    "serve": "node server.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://7f0548f6b28a1758d9bf7be630d36cb4.artifacts.cloudflare.net/git/prod/wdp_5c6aff2b7410c022575711c9.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Static informational website for Tumaini Community Trust, a Kenyan NGO",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "private": true
+}

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/about/",
+      "title": "About"
+    },
+    {
+      "path": "/programs/",
+      "title": "Programs"
+    },
+    {
+      "path": "/campaigns/",
+      "title": "Campaigns"
+    },
+    {
+      "path": "/blog/",
+      "title": "Blog"
+    },
+    {
+      "path": "/contact/",
+      "title": "Contact"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /manus-storage/
+
+Sitemap: https://8328-if3l7f2ffj7xabsq50t89-d8c08184.us4.manus.computer/sitemap.xml

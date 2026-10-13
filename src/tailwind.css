@@ -1,0 +1,548 @@
+/* ==========================================================================
+   Tumaini Community Trust — design system
+   Warm earth palette, woven-textile motifs, mobile-first.
+   Compiled with: npm run build:css
+   ========================================================================== */
+@import "tailwindcss";
+@import "./fonts.css";
+
+@source "../public";
+@source "./pages";
+
+/* --------------------------------------------------------------------------
+   Design tokens
+   -------------------------------------------------------------------------- */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Deep Green — trust, growth, canopy */
+  --color-forest: #1b4332;
+  --color-forest-deep: #12301f;
+  --color-forest-soft: #2d6a4f;
+  --color-forest-mist: #e7efe9;
+
+  /* Warm Gold / Amber — soil, harvest, sunlight */
+  --color-gold: #d4a373;
+  --color-gold-deep: #a97a4d;
+  --color-gold-wash: #fbf4ea;
+
+  /* Neutrals */
+  --color-cream: #f8f9fa;
+  --color-charcoal: #212529;
+  --color-charcoal-soft: #4d5459;
+  --color-line: #e4e6e8;
+  --color-clay: #a9573a;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-forest-deep);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--color-forest);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-gold-deep);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-charcoal);
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Components
+   -------------------------------------------------------------------------- */
+@layer components {
+  /* --- Buttons: minimum 48px tall touch targets everywhere --------------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .btn-primary {
+    background-color: var(--color-gold);
+    color: var(--color-charcoal);
+    box-shadow: 0 5px 0 -1px var(--color-gold-deep);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-gold-deep);
+    color: #fff;
+  }
+
+  .btn-primary:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 -1px var(--color-gold-deep);
+  }
+
+  .btn-forest {
+    background-color: var(--color-forest);
+    color: #fff;
+    box-shadow: 0 5px 0 -1px var(--color-forest-deep);
+  }
+
+  .btn-forest:hover {
+    background-color: var(--color-forest-soft);
+    color: #fff;
+  }
+
+  .btn-forest:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 -1px var(--color-forest-deep);
+  }
+
+  .btn-outline {
+    border: 2px solid color-mix(in srgb, var(--color-forest) 28%, transparent);
+    background-color: transparent;
+    color: var(--color-forest);
+  }
+
+  .btn-outline:hover {
+    background-color: color-mix(in srgb, var(--color-forest) 8%, transparent);
+    border-color: var(--color-forest);
+  }
+
+  .btn-outline-light {
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    background-color: transparent;
+    color: #fff;
+  }
+
+  .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: #fff;
+  }
+
+  .btn-sm {
+    min-height: 3rem;
+    padding: 0.55rem 1.15rem;
+    font-size: 0.9375rem;
+  }
+
+  /* --- Navigation ------------------------------------------------------- */
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 9999px;
+    color: var(--color-charcoal);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease;
+  }
+
+  .nav-link:hover {
+    background-color: var(--color-forest-mist);
+    color: var(--color-forest);
+  }
+
+  .nav-link[aria-current="page"] {
+    color: var(--color-forest);
+    font-weight: 700;
+    box-shadow: inset 0 -2px 0 0 var(--color-gold);
+    border-radius: 0.5rem;
+  }
+
+  .nav-link-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 3.25rem;
+    padding: 0.75rem 0.25rem;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-charcoal);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .nav-link-mobile:hover,
+  .nav-link-mobile[aria-current="page"] {
+    color: var(--color-forest);
+  }
+
+  .nav-link-mobile[aria-current="page"]::after {
+    content: "";
+    width: 1.5rem;
+    height: 0.3rem;
+    border-radius: 9999px;
+    background: var(--color-gold);
+  }
+
+  /* --- Signature woven textile motifs ---------------------------------- */
+  .kanga-rule {
+    height: 0.4rem;
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--color-forest) 0 16px,
+      var(--color-gold) 16px 24px,
+      var(--color-forest-soft) 24px 34px,
+      var(--color-cream) 34px 40px
+    );
+  }
+
+  .woven {
+    background-color: var(--color-forest-mist);
+    background-image:
+      repeating-linear-gradient(45deg, rgba(27, 67, 50, 0.055) 0 2px, transparent 2px 9px),
+      repeating-linear-gradient(-45deg, rgba(212, 163, 115, 0.08) 0 2px, transparent 2px 9px);
+  }
+
+  .woven-dark {
+    background-color: var(--color-forest-deep);
+    background-image:
+      repeating-linear-gradient(45deg, rgba(212, 163, 115, 0.09) 0 2px, transparent 2px 11px),
+      repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.045) 0 2px, transparent 2px 11px);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+  }
+
+  .section-label::before {
+    content: "";
+    width: 1.6rem;
+    height: 0.35rem;
+    border-radius: 9999px;
+    background: var(--color-gold);
+  }
+
+  .section-label-light {
+    color: var(--color-gold);
+  }
+
+  .section-label-light::before {
+    background: var(--color-gold);
+  }
+
+  /* --- Cards ------------------------------------------------------------ */
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background-image: linear-gradient(
+      90deg,
+      var(--color-forest) 0%,
+      var(--color-forest-soft) 45%,
+      var(--color-gold) 100%
+    );
+    z-index: 1;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-forest) 22%, transparent);
+    box-shadow: 0 18px 34px -22px rgba(18, 48, 31, 0.45);
+  }
+
+  .card-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .program-number {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--color-gold-deep);
+  }
+
+  /* --- Media ------------------------------------------------------------ */
+  .frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background-color: var(--color-forest-mist);
+  }
+
+  .frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .frame-accent::after {
+    content: "";
+    position: absolute;
+    right: -0.9rem;
+    bottom: -0.9rem;
+    width: 58%;
+    height: 58%;
+    border-right: 3px solid var(--color-gold);
+    border-bottom: 3px solid var(--color-gold);
+    border-radius: 0 0 1.6rem 0;
+    pointer-events: none;
+  }
+
+  .video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: #0d1712;
+  }
+
+  .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* --- Data display ----------------------------------------------------- */
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-forest);
+  }
+
+  .stat-value-light {
+    color: #fff;
+  }
+
+  .progress {
+    height: 0.7rem;
+    border-radius: 9999px;
+    background-color: var(--color-forest-mist);
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    border-radius: 9999px;
+    background-image: linear-gradient(90deg, var(--color-forest), var(--color-gold));
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background-color: var(--color-gold-wash);
+    color: var(--color-gold-deep);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* --- Forms ------------------------------------------------------------ */
+  .field {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.85rem;
+    background-color: #fff;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-charcoal);
+  }
+
+  .field:focus {
+    border-color: var(--color-forest);
+    box-shadow: 0 0 0 3px rgba(27, 67, 50, 0.12);
+    outline: none;
+  }
+
+  .field-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-forest-deep);
+  }
+
+  /* --- Editorial typography -------------------------------------------- */
+  .lede {
+    font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-charcoal-soft);
+  }
+
+  .prose-body p + p {
+    margin-top: 1rem;
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--color-forest);
+    text-decoration: none;
+    border-bottom: 2px solid color-mix(in srgb, var(--color-gold) 70%, transparent);
+    padding-bottom: 0.1rem;
+  }
+
+  .link-arrow:hover {
+    border-bottom-color: var(--color-forest);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    background-color: var(--color-forest);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .is-stuck {
+    box-shadow: 0 10px 30px -22px rgba(18, 48, 31, 0.55);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Motion — restrained, purposeful, and disabled on request
+   -------------------------------------------------------------------------- */
+@layer utilities {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .reveal {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .reveal-1 {
+    animation-delay: 0.08s;
+  }
+
+  .reveal-2 {
+    animation-delay: 0.16s;
+  }
+
+  .reveal-3 {
+    animation-delay: 0.24s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-1,
+  .reveal-2,
+  .reveal-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+}
